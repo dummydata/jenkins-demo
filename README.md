@@ -5,7 +5,7 @@ Jenkins demo using Vagrant
 
 ### Dependencies
 
-    [Vagrant](http://www.vagrantup.com)
+  * [Vagrant](http://www.vagrantup.com)
 
 ## How to Use
 
