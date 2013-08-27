@@ -10,6 +10,7 @@ Vagrant::Config.run do |config|
     jenkins.vm.network :hostonly, "192.168.2.101"
     jenkins.vm.forward_port 8080, 8080
     jenkins.vm.provision :puppet do |puppet|
+      puppet.module_path = './modules'
       puppet.manifests_path = '.'
       puppet.manifest_file = 'jenkins.pp'
     end

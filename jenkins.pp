@@ -1,22 +1,17 @@
-exec { 'curl -O http://pkg.jenkins-ci.org/redhat/jenkins.repo':
-  cwd		 => '/etc/yum.repos.d/',
-  creates => '/etc/yum.repos.d/jenkins.repo', 
-  path    => ['/usr/bin', '/usr/sbin'],
-  before  => Package['jenkins'],
-}
+Package { ensure => latest, }
 
-exec { 'rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key':
-  path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
-  before  => Package['jenkins'],
-}
+if ! defined(Package['java-1.7.0-openjdk-devel']) { package { 'java-1.7.0-openjdk-devel': } }
+if ! defined(Package['dejavu-sans-fonts']) { package { 'dejavu-sans-fonts': } }
+if ! defined(Package['fontconfig']) { package { 'fontconfig': } }
+if ! defined(Package['git']) { package { 'git': } }
 
-package { ['java-1.7.0-openjdk-devel', 'jenkins']:
-  ensure => latest,
-}
-
-service { 'jenkins':
-  ensure  => running,
-  require => Package['jenkins', 'java-1.7.0-openjdk-devel'],
+class { 'jenkins':
+  config_hash  => {
+    'JVM_OPTS' => { 'value' => '-Djava.awt.headless=true' },
+  },
+  plugin_hash => {
+    'git'     => {},
+  },
 }
 
 service { ['iptables', 'ip6tables' ]:
