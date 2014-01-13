@@ -7,7 +7,6 @@ Vagrant::Config.run do |config|
     jenkins.vm.box = "centos6"
     jenkins.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"
     jenkins.vm.host_name = "jenkins-ci"
-    jenkins.vm.network :hostonly, "192.168.2.101"
     jenkins.vm.forward_port 8080, 8080
     jenkins.vm.provision :puppet do |puppet|
       puppet.module_path = './modules'
