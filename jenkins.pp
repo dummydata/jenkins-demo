@@ -10,10 +10,15 @@ class { 'jenkins':
     'JVM_OPTS' => { 'value' => '-Djava.awt.headless=true' },
   },
   plugin_hash => {
-    'git'     => {},
+    'git'             => {},
+    'scm-api'         => {},
+    'git-client'      => {},
+    'credentials'     => {},
+    'ssh-credentials' => {},
   },
 }
 
 service { ['iptables', 'ip6tables' ]:
-  ensure  =>  stopped,
+  enable  => false,
+  ensure  => stopped,
 }
