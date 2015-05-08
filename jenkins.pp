@@ -14,6 +14,7 @@ class { 'jenkins':
     'git-client'      => {},
     'credentials'     => {},
     'ssh-credentials' => {},
+    'job-dsl'         => {},
   },
 }
 
