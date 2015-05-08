@@ -1,6 +1,5 @@
 Package { ensure => latest, }
 
-if ! defined(Package['java-1.7.0-openjdk-devel']) { package { 'java-1.7.0-openjdk-devel': } }
 if ! defined(Package['dejavu-sans-fonts']) { package { 'dejavu-sans-fonts': } }
 if ! defined(Package['fontconfig']) { package { 'fontconfig': } }
 if ! defined(Package['git']) { package { 'git': } }
@@ -15,6 +14,7 @@ class { 'jenkins':
     'git-client'      => {},
     'credentials'     => {},
     'ssh-credentials' => {},
+    'job-dsl'         => {},
   },
 }
 
