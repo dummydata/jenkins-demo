@@ -1,3 +1,9 @@
+### Deprecated - DO NOT USE ###
+This is really old and not worth your time. 
+
+Use https://hub.docker.com/r/jenkins/jenkins instead.
+
+
 jenkins-demo
 ============
 
